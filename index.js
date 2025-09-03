@@ -1,4 +1,4 @@
-
+import dotenv from 'dotenv';
 import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 
@@ -6,7 +6,8 @@ import { MongoClient, ObjectId } from 'mongodb';
 const app = express();
 app.use(express.static('public'));
 const port = 3000;
-const uri = 'mongodb://localhost:27017';
+dotenv.config();
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 app.use(express.json());
